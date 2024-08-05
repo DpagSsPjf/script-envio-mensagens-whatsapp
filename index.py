@@ -11,7 +11,7 @@ navegador = webdriver.Chrome()
 
 navegador.get('https://web.whatsapp.com/')
 
-midia = '/home/diogoalberto/Documentos/Projetos/script-message-whatsapp/images/galo.png'
+midia = '/home/diogoalberto/Documentos/Projetos/script-message-whatsapp/images/imagem.png'
 
 while len(navegador.find_elements(By.ID,"side")) < 1:
     time.sleep(1)   
