@@ -15,6 +15,9 @@ contatos = ['5532988141424']
 #Lista de Grupos
 grupos = ['Teste', '2teste']
 
+#Coloque o diretorio da sua planilha
+planilha = './planilha/contatos.xlsx'
+
 opcao = input('Selecione como deseja enviar sua mensagem\n------------------------------------\nCom base em planilhas:\n 1. Enviar mensagem e imagem\n 2. Enviar mensagem\nEnviar para grupos:\n 3. Enviar mensagem e imagem\n 4. Enviar mensagem\nEnviar para lista de contatos no sistema\n 5. Enviar mensagem e imagem \n 6. Enviar mensagem\n \n')
 
 navegador = webdriver.Chrome()
@@ -39,7 +42,7 @@ def abrirGrupo(grupo):
 
 def enviarMensagemImagemPlanilha( midia):
     logar()
-    dados = pd.read_excel('./planilha/contatos.xlsx')
+    dados = pd.read_excel(planilha)
     for i, row in dados.iterrows():
         nome = row['Nome']
         contato = row['Contato']
@@ -56,7 +59,7 @@ def enviarMensagemImagemPlanilha( midia):
 
 def enviarMensagemPlanilha():
     logar()
-    dados = pd.read_excel('./planilha/contatos.xlsx')
+    dados = pd.read_excel(planilha)
     for i, row in dados.iterrows():
         nome = row['Nome']
         contato = row['Contato']
