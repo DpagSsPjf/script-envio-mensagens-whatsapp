@@ -9,7 +9,7 @@ import sys
 from selenium.common.exceptions import InvalidArgumentException,NoSuchElementException, NoSuchWindowException
 
 #Coloque o diretorio de sua imagem
-midia = '/home/diogo/Documentos/projetos/script-envio-mensagem-wpp-ss-dpag/images/video.mp4'
+midia = '/home/diogo/Documentos/pjf/script-envio-mensagens-whatsapp/images/pjf.png'
 
 #Lista de Contatos
 contatos = ['5532988141424']
@@ -36,8 +36,8 @@ def logar():
 def abrirConversa(contato, mensagemEncoded):
     link = f'https://web.whatsapp.com/send?phone={contato}&text={mensagemEncoded}'
     navegador.get(link)
-    while len(navegador.find_elements(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div/p')) < 1:
-     time.sleep(2)
+    time.sleep(10)
+    
 
 def abrirGrupo(grupo):
         campoPesquisa = navegador.find_element(By.XPATH, '//*[@id="side"]/div[1]/div/div[2]/div[2]/div/div[1]/p')
@@ -68,9 +68,9 @@ def enviarMensagemImagemPlanilha(mensagem,planilha,midia):
             contato = row['Contato']
             mensagemEncoded = urllib.parse.quote(mensagem)
             abrirConversa(contato,mensagemEncoded)
-            navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/div/div/span').click()
+            navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span/div/div[1]/div[2]/div/div/div/span').click()
             time.sleep(3)
-            navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div/ul/div/div[2]/li/div/input').send_keys(midia)
+            navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span/div/div[1]/div[2]/div/span/div/ul/div/div[2]/li/div/input').send_keys(midia)
             time.sleep(3)
             navegador.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div[2]/span/div/div/div/div[2]/div/div[2]/div[2]/div/div').click()
             time.sleep(10)
