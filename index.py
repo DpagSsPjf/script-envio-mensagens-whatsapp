@@ -24,7 +24,7 @@ planilha = './planilha/contatos.xlsx'
 #Necessário manter as 3 apas tanto antes quanto depois da mensagem
 mensagem="""Cole aqui sua mensagem"""
 
-opcao = input('Selecione como deseja enviar sua mensagem\n------------------------------------\nCom base em planilhas:\n 1. Enviar mensagem e imagem\n 2. Enviar mensagem\nEnviar para grupos:\n 3. Enviar mensagem e imagem\n 4. Enviar mensagem\nEnviar para lista de contatos no sistema\n 5. Enviar mensagem e imagem \n 6. Enviar mensagem\n \n')
+opcao = input('Selecione como deseja enviar sua mensagem\n------------------------------------\nCom base em planilhas:\n 1. Enviar mensagem e imagem\n 2. Enviar mensagem\n')
 
 navegador = webdriver.Chrome()
 
@@ -136,13 +136,13 @@ def enviarMensagemImagemGrupo(mensagem,grupos,midia):
     for grupo in grupos:
         try:
             abrirGrupo(grupo)
-            campoMensagem = navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[1]/div/div[1]/p')
+            campoMensagem = navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div[1]/div/div[1]/p')
             time.sleep(2)
             campoMensagem.click()
             ajustarQuebraDeLinhas(mensagem,campoMensagem)
             navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/div/div/span').click()
             time.sleep(2)
-            navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div/ul/div/div[2]/li/div/input').send_keys(midia)
+            navegador.find_element(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div[1]/div/div/p').send_keys(midia)
             time.sleep(2)
             navegador.find_element(By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div[2]/span/div/div/div/div[2]/div/div[2]/div[2]/div/div').click()
             time.sleep(10)
@@ -254,14 +254,17 @@ if opcao == '1':
     enviarMensagemImagemPlanilha(mensagem,planilha,midia)
 elif opcao =='2':
     enviarMensagemPlanilha(mensagem,planilha)
-elif opcao =='3':
+else:
+    print('\nEscolha apenas 1 das opções acima!')
+"""elif opcao =='3':
     enviarMensagemImagemGrupo(mensagem,grupos,midia)
 elif opcao =='4':
     enviarMensagemGrupo(mensagem,grupos)
 elif opcao =='5':
     enviarMensagemImagem(mensagem,contatos,midia)
 elif opcao =='6':
-    enviarMensagem(mensagem,contatos)
-else:
-    print('\nEscolha apenas 1 das opções acima!')
+    enviarMensagem(mensagem,contatos)"""
+
+
+#'Selecione como deseja enviar sua mensagem\n------------------------------------\nCom base em planilhas:\n 1. Enviar mensagem e imagem\n 2. Enviar mensagem\nEnviar para grupos:\n 3. Enviar mensagem e imagem\n 4. Enviar mensagem\nEnviar para lista de contatos no sistema\n 5. Enviar mensagem e imagem \n 6. Enviar mensagem\n \n'
 
